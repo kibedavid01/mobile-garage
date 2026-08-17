@@ -1,0 +1,52 @@
+<header class="sticky top-0 z-50 bg-asphalt text-paper border-b-4 border-hivis">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="flex items-center justify-between h-18 py-3">
+      <a routerLink="/" (click)="closeMenu()" class="flex items-center gap-2 group">
+        <span class="font-display text-2xl md:text-3xl font-bold tracking-tight text-paper">
+          Name<span class="text-hivis">.</span>
+        </span>
+        <span class="hidden md:inline font-mono text-[10px] uppercase tracking-[0.2em] text-chrome self-end pb-1">
+          mobile garage
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 font-body text-sm uppercase tracking-wide">
+        <a routerLink="/" routerLinkActive="text-hivis" [routerLinkActiveOptions]="{exact: true}"
+           class="hover:text-hivis transition-colors">Home</a>
+        <a routerLink="/services" routerLinkActive="text-hivis"
+           class="hover:text-hivis transition-colors">Services</a>
+        <a routerLink="/about" routerLinkActive="text-hivis"
+           class="hover:text-hivis transition-colors">About</a>
+        <a routerLink="/booking"
+           class="bg-hivis text-asphalt font-semibold px-4 py-2 rounded-sm hover:bg-paper transition-colors">
+          Book a Mechanic
+        </a>
+      </nav>
+
+      <button (click)="toggleMenu()" class="md:hidden p-2 -mr-2" [attr.aria-expanded]="menuOpen()" aria-label="Toggle menu">
+        @if (!menuOpen()) {
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        }
+      </button>
+    </div>
+
+    @if (menuOpen()) {
+      <nav class="md:hidden flex flex-col gap-1 pb-5 font-body text-sm uppercase tracking-wide border-t border-steel/40 pt-4">
+        <a routerLink="/" (click)="closeMenu()" routerLinkActive="text-hivis" [routerLinkActiveOptions]="{exact: true}"
+           class="py-2">Home</a>
+        <a routerLink="/services" (click)="closeMenu()" routerLinkActive="text-hivis" class="py-2">Services</a>
+        <a routerLink="/about" (click)="closeMenu()" routerLinkActive="text-hivis" class="py-2">About</a>
+        <a routerLink="/booking" (click)="closeMenu()"
+           class="bg-hivis text-asphalt font-semibold px-4 py-3 rounded-sm text-center mt-2">
+          Book a Mechanic
+        </a>
+      </nav>
+    }
+  </div>
+</header>
